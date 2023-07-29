@@ -49,6 +49,8 @@
       cursor: pointer;
       color: greenyellow;
       background-color: gray;
+      padding-left: 5rem;
+      padding-right: 5rem;
 
       &:hover {
         filter: drop-shadow(8px 8px 4px rgb(73, 69, 69));
