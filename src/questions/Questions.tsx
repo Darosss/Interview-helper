@@ -22,7 +22,7 @@ export function Questions() {
       return flatQuestions[Math.floor(Math.random() * flatQuestions.length)];
     }
     if (shuffle) {
-      return questions.sort(() => Math.random() - 0.5);
+      return questions.flat().sort(() => Math.random() - 0.5);
     }
 
     return questions;
