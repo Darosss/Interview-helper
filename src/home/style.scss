@@ -1,0 +1,26 @@
+#menu {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(109, 109, 109);
+  border-radius: 0.2rem;
+  height: 200px;
+  padding-bottom: 0.5rem;
+
+  h1 {
+    flex: 0 0 30%;
+  }
+  div.menu-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    overflow-x: hidden;
+    border-bottom: 1px solid rgb(81, 80, 80);
+    box-shadow: 1px 1px 1px rgb(52, 50, 50);
+
+    button {
+      overflow: hidden;
+      flex: 1 1 15%;
+      margin: 0.1rem;
+    }
+  }
+}
