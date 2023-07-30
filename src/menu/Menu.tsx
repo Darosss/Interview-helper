@@ -40,6 +40,20 @@ export function Menu() {
     });
   }
 
+  function handleParamsOnClick(newTopic: string) {
+    const topicsIdsParams = URLSearchParams.get(
+      QuestionsURLParams.TOPIC_ID
+    )?.split(",");
+
+    if (!topicsIdsParams) return newTopic;
+
+    if (topicsIdsParams.includes(newTopic)) {
+      return topicsIdsParams.filter((id) => id !== newTopic);
+    }
+
+    return [...topicsIdsParams, newTopic];
+  }
+
   return (
     <>
       <div id="menu">
@@ -79,9 +93,11 @@ export function Menu() {
                   ? "active"
                   : ""
               }`}
-              to={`/questions?${QuestionsURLParams.TOPIC_ID}=${topic.id}`}
+              to={`/questions?${
+                QuestionsURLParams.TOPIC_ID
+              }=${handleParamsOnClick(topic.id)}`}
             >
-              {topic.name}
+              {topic.name} xx
             </Link>
           ))}
         </div>
