@@ -2,6 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { questionsList } from "../questions/questionsList";
 import { useMemo } from "react";
 import { toast } from "react-toastify";
+import { QuestionsURLParams } from "../questions/question.enums";
 
 export function Menu() {
   const [URLSearchParams, setURLSearchParams] = useSearchParams();
@@ -9,14 +10,14 @@ export function Menu() {
 
   function handleRandomAll() {
     setURLSearchParams((prevParams) => {
-      prevParams.set("topicId", allTopics.join(","));
+      prevParams.set(QuestionsURLParams.TOPIC_ID, allTopics.join(","));
       prevParams.set("random", "true");
       return prevParams;
     });
   }
 
   function handleRandomFromChoosen() {
-    if (!URLSearchParams.get("topicId")) {
+    if (!URLSearchParams.get(QuestionsURLParams.TOPIC_ID)) {
       toast.info("Choose at least one topic first", { autoClose: 5000 }); //alert
       return;
     }
@@ -28,7 +29,7 @@ export function Menu() {
   }
 
   function handleOnShuffleQuestions() {
-    if (!URLSearchParams.get("topicId")) {
+    if (!URLSearchParams.get(QuestionsURLParams.TOPIC_ID)) {
       toast.info("Choose at least one topic first", { autoClose: 5000 }); //alert
       return;
     }
@@ -48,7 +49,9 @@ export function Menu() {
             <button onClick={handleRandomFromChoosen}> Random question </button>
             <button
               className={`${
-                URLSearchParams.get("random") === "true" ? "active" : ""
+                URLSearchParams.get(QuestionsURLParams.RANDOM) === "true"
+                  ? "active"
+                  : ""
               }`}
               onClick={handleRandomAll}
             >
@@ -60,18 +63,23 @@ export function Menu() {
           </div>
         </div>
         <div className="menu-buttons">
-          <Link className="menu-button " to={`/questions?topicId=${allTopics}`}>
+          <Link
+            className="menu-button "
+            to={`/questions?${QuestionsURLParams.TOPIC_ID}=${allTopics}`}
+          >
             All
           </Link>
           {questionsList.map((topic, idx) => (
             <Link
               key={idx}
               className={`menu-button ${
-                URLSearchParams.get("topicId")?.includes(topic.id)
+                URLSearchParams.get(QuestionsURLParams.TOPIC_ID)?.includes(
+                  topic.id
+                )
                   ? "active"
                   : ""
               }`}
-              to={`/questions?topicId=${topic.id}`}
+              to={`/questions?${QuestionsURLParams.TOPIC_ID}=${topic.id}`}
             >
               {topic.name}
             </Link>
