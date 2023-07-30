@@ -2,14 +2,20 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { questionsList } from "./questionsList";
 import { QuestionData } from "./QuestionData";
+import { TopicsList } from "./questions.interface";
 
 export function Questions() {
   const [URLSearchParams] = useSearchParams();
 
-  function getQuestions(random?: boolean, shuffle?: boolean) {
-    const questions = questionsList
+  function getQuestions(
+    topics: TopicsList[],
+    topicId?: string,
+    random?: boolean,
+    shuffle?: boolean
+  ) {
+    const questions = topics
       .filter(({ id }) => {
-        return URLSearchParams.get("topicId")?.split(",").includes(id);
+        return topicId?.split(",").includes(id);
       })
       ?.map(({ questions, name }) =>
         questions.map((item, idx) => (
@@ -34,13 +40,14 @@ export function Questions() {
         <div className="questions-wrapper">
           {URLSearchParams.get("topicId")
             ? getQuestions(
+                questionsList,
+                URLSearchParams.get("topicId") ?? "",
                 !!URLSearchParams.get("random"),
                 !!URLSearchParams.get("shuffle")
               )
-            : null}
+            : "Choose topics to get questions"}
         </div>
       </div>
     </>
   );
 }
-// const randomElement = array[Math.floor(Math.random() * array.length)];
