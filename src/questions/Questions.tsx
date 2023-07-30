@@ -20,7 +20,7 @@ export function Questions() {
       })
       ?.map(({ questions, name }) =>
         questions.map((item, idx) => (
-          <QuestionData key={idx} name={name} item={item} />
+          <QuestionData key={`${idx}-${name}`} name={name} item={item} />
         ))
       )
       .flat();
