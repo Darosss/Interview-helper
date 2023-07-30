@@ -1,12 +1,6 @@
 import { nodeQuestions } from ".";
-import { QuestionsList } from "./questions.interface";
+import { TopicsList } from "./questions.interface";
 import { reactQuestions } from "./reactQuestions";
-
-interface TopicsList {
-  id: string;
-  name: string;
-  questions: QuestionsList[];
-}
 
 export const questionsList = generateJSONQuestions([
   { name: "Node.js", questions: nodeQuestions },
