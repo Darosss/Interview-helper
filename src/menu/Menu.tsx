@@ -11,7 +11,7 @@ export function Menu() {
   function handleRandomAll() {
     setURLSearchParams((prevParams) => {
       prevParams.set(QuestionsURLParams.TOPIC_ID, allTopics.join(","));
-      prevParams.set("random", "true");
+      prevParams.set(QuestionsURLParams.RANDOM, "true");
       return prevParams;
     });
   }
@@ -23,7 +23,7 @@ export function Menu() {
     }
 
     setURLSearchParams((prevParams) => {
-      prevParams.set("random", "true");
+      prevParams.set(QuestionsURLParams.RANDOM, "true");
       return prevParams;
     });
   }
@@ -35,7 +35,7 @@ export function Menu() {
     }
 
     setURLSearchParams((prevParams) => {
-      prevParams.set("shuffle", "true");
+      prevParams.set(QuestionsURLParams.SHUFFLE, "true");
       return prevParams;
     });
   }
