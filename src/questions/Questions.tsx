@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { questionsList } from "./questionsList";
 import { QuestionData } from "./QuestionData";
 import { TopicsList } from "./questions.interface";
+import { QuestionsURLParams } from "./question.enums";
 
 export function Questions() {
   const [URLSearchParams] = useSearchParams();
@@ -12,7 +13,7 @@ export function Questions() {
     topicId?: string,
     random?: boolean,
     shuffle?: boolean
-  ) {
+  ): JSX.Element | JSX.Element[] {
     const questions = topics
       .filter(({ id }) => {
         return topicId?.split(",").includes(id);
@@ -21,31 +22,31 @@ export function Questions() {
         questions.map((item, idx) => (
           <QuestionData key={idx} name={name} item={item} />
         ))
-      );
+      )
+      .flat();
 
     if (random) {
-      const flatQuestions = questions.flat();
+      const flatQuestions = questions;
       return flatQuestions[Math.floor(Math.random() * flatQuestions.length)];
     }
     if (shuffle) {
-      return questions.flat().sort(() => Math.random() - 0.5);
+      return questions.sort(() => Math.random() - 0.5);
     }
 
-    return questions;
+    if (questions.length > 0) return questions;
+    return <>Choose topics to get questions </>;
   }
 
   return (
     <>
       <div id="questions">
         <div className="questions-wrapper">
-          {URLSearchParams.get("topicId")
-            ? getQuestions(
-                questionsList,
-                URLSearchParams.get("topicId") ?? "",
-                !!URLSearchParams.get("random"),
-                !!URLSearchParams.get("shuffle")
-              )
-            : "Choose topics to get questions"}
+          {getQuestions(
+            questionsList,
+            URLSearchParams.get(QuestionsURLParams.TOPIC_ID) ?? "",
+            !!URLSearchParams.get(QuestionsURLParams.RANDOM),
+            !!URLSearchParams.get(QuestionsURLParams.SHUFFLE)
+          )}
         </div>
       </div>
     </>
