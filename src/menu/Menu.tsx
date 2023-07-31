@@ -56,7 +56,7 @@ export function Menu() {
 
   return (
     <>
-      <div id="menu">
+      <div id="menu" className="menu-wrapper">
         <div className="menu-head">
           <h1> Interview helper </h1>
           <div className="menu-head-buttons">
@@ -97,7 +97,7 @@ export function Menu() {
                 QuestionsURLParams.TOPIC_ID
               }=${handleParamsOnClick(topic.id)}`}
             >
-              {topic.name} xx
+              {topic.name}
             </Link>
           ))}
         </div>
