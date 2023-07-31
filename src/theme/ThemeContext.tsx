@@ -6,7 +6,7 @@ interface ThemeContextData {
 }
 
 const initialThemeState = {
-  theme: "light",
+  theme: localStorage.getItem("globalTheme") || "dark",
   setTheme: () => {},
 };
 
@@ -15,16 +15,6 @@ export const ThemeContext =
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState(initialThemeState.theme);
-
-  const localStorage = window.localStorage;
-
-  useEffect(() => {
-    const savedThemeLocal = localStorage.getItem("globalTheme");
-
-    if (!savedThemeLocal) {
-      setTheme(savedThemeLocal || "dark");
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem("globalTheme", theme);
