@@ -16,6 +16,9 @@
 
   .menu-wrapper {
     flex: 0 0 10%;
+    position: sticky;
+    z-index: 110;
+    top: 0;
   }
 
   .content-wrapper {
