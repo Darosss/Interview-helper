@@ -1,8 +1,11 @@
+@use "../variables";
+
 #questions {
   display: flex;
   justify-content: center;
 
   .questions-wrapper {
+    font-size: 3vmin;
     div {
       padding: 0.5rem;
     }
@@ -12,6 +15,7 @@
       position: relative;
 
       .topic-name-absolute {
+        opacity: 0.7;
         position: absolute;
         left: 20px;
         top: 20px;
@@ -49,8 +53,8 @@
       cursor: pointer;
       color: greenyellow;
       background-color: gray;
-      padding-left: 5rem;
-      padding-right: 5rem;
+      padding-left: 8rem;
+      padding-right: 8rem;
 
       &:hover {
         filter: drop-shadow(8px 8px 4px rgb(73, 69, 69));
@@ -72,5 +76,120 @@
   & > div {
     flex: 1 1 100%;
     padding: 0.5rem;
+  }
+}
+
+@media (max-width: variables.$window-size-breakpoint-x-large) {
+  #questions {
+    .questions-wrapper {
+      div {
+        padding: 3rem;
+        font-size: 2vw;
+      }
+
+      .questions-list {
+        .topic-name-absolute {
+          left: 50px;
+          top: 40px;
+        }
+        .copy-button {
+          width: 120px;
+          font-size: 1vw;
+          img {
+            width: 10px;
+          }
+
+          &.copy-question {
+            top: 80px;
+            right: 80px;
+          }
+
+          &.copy-answer {
+            bottom: 80px;
+            right: 80px;
+          }
+        }
+      }
+
+      .question {
+        padding-left: 12rem;
+        padding-right: 15rem;
+      }
+    }
+  }
+}
+
+@media (max-width: variables.$window-size-breakpoint-large) {
+  #questions {
+    .questions-wrapper {
+      div {
+        padding: 3rem;
+        font-size: 2.5vw;
+      }
+
+      .questions-list {
+        .topic-name-absolute {
+          left: 30px;
+        }
+        .copy-button {
+          width: 70px;
+          font-size: 0.8vw;
+          img {
+            width: 10px;
+          }
+
+          &.copy-question {
+            top: 65px;
+            right: 60px;
+          }
+
+          &.copy-answer {
+            bottom: 65px;
+            right: 60px;
+          }
+        }
+      }
+
+      .question {
+        padding-left: 12rem;
+        padding-right: 15rem;
+      }
+    }
+  }
+}
+
+@media (max-width: variables.$window-size-breakpoint-small) {
+  #questions {
+    .questions-wrapper {
+      div {
+        padding: 3rem;
+        font-size: 3vw;
+      }
+
+      .questions-list {
+        .copy-button {
+          width: 50px;
+          font-size: 1vw;
+          img {
+            width: 10px;
+          }
+
+          &.copy-question {
+            top: 45px;
+            right: 45px;
+          }
+
+          &.copy-answer {
+            bottom: 45px;
+            right: 45px;
+          }
+        }
+      }
+
+      .question {
+        padding-left: 12rem;
+        padding-right: 15rem;
+      }
+    }
   }
 }
