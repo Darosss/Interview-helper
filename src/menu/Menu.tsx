@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { toast } from "react-toastify";
 import { QuestionsURLParams } from "../questions/question.enums";
 import { ThemeSetter } from "../theme";
+import { DoneQuestions } from "./DoneQuestions";
 
 export function Menu() {
   const [URLSearchParams, setURLSearchParams] = useSearchParams();
@@ -78,6 +79,7 @@ export function Menu() {
 
             <button onClick={handleOnShuffleQuestions}>Shuffle</button>
             <button onClick={() => setURLSearchParams()}>Clear</button>
+            <DoneQuestions />
           </div>
         </div>
         <div className="menu-buttons">
