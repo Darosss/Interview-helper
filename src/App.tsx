@@ -7,27 +7,30 @@ import { Route, Routes } from "react-router-dom";
 import { Questions } from "./questions";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "./theme";
+import { QuestionsProvider } from "./questions/QuestionsContext";
 
 export function App() {
   return (
     <>
       <ThemeProvider>
-        <div className="app-wrapper">
-          <div className="menu-wrapper">
-            <Menu />
-            <ToastContainer autoClose={5000} theme="dark" />
-          </div>
-          <div className="content-wrapper">
-            <Routes>
-              <Route path="/">
-                <Route index element={<Home />} />
-                <Route path="questions">
-                  <Route index element={<Questions />} />
+        <QuestionsProvider>
+          <div className="app-wrapper">
+            <div className="menu-wrapper">
+              <Menu />
+              <ToastContainer autoClose={5000} theme="dark" />
+            </div>
+            <div className="content-wrapper">
+              <Routes>
+                <Route path="/">
+                  <Route index element={<Home />} />
+                  <Route path="questions">
+                    <Route index element={<Questions />} />
+                  </Route>
                 </Route>
-              </Route>
-            </Routes>
+              </Routes>
+            </div>
           </div>
-        </div>
+        </QuestionsProvider>
       </ThemeProvider>
     </>
   );
