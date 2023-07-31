@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { LocalStorageNames } from "../localstorage.enum";
 
 interface QuestionsContextData {
   doneQuestions: string[];
@@ -6,7 +7,8 @@ interface QuestionsContextData {
 }
 
 const initialQuestionsState = {
-  doneQuestions: localStorage.getItem("doneQuestions")?.split(",") || [],
+  doneQuestions:
+    localStorage.getItem(LocalStorageNames.doneQuestions)?.split(",") || [],
   updateDoneQuestions: () => {},
 };
 
@@ -20,7 +22,10 @@ export function QuestionsProvider({ children }: { children: React.ReactNode }) {
   );
 
   useEffect(() => {
-    localStorage.setItem("doneQuestions", doneQuestions.join(","));
+    localStorage.setItem(
+      LocalStorageNames.doneQuestions,
+      doneQuestions.join(",")
+    );
   }, [doneQuestions]);
 
   function updateDoneQuestions(newDoneQuestions: string[]) {

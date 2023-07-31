@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { QuestionsContext } from "../questions/QuestionsContext";
 import { toast } from "react-toastify";
+import { LocalStorageNames } from "../localstorage.enum";
 
 export function DoneQuestions() {
   const { doneQuestions, updateDoneQuestions } = useContext(QuestionsContext);
@@ -13,7 +14,9 @@ export function DoneQuestions() {
   }
 
   function handleUnDoneQuestion(id: string) {
-    const questionsLocalStorage = localStorage.getItem("doneQuestions");
+    const questionsLocalStorage = localStorage.getItem(
+      LocalStorageNames.doneQuestions
+    );
     console.log(questionsLocalStorage);
     if (!questionsLocalStorage) return;
 
@@ -23,7 +26,10 @@ export function DoneQuestions() {
 
     updateDoneQuestions(newDoneQuestions);
 
-    localStorage.setItem("doneQuestions", newDoneQuestions.join(","));
+    localStorage.setItem(
+      LocalStorageNames.doneQuestions,
+      newDoneQuestions.join(",")
+    );
   }
 
   function handleCloseOnNoDoneQuestions() {

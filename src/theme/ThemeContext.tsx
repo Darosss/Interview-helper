@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { LocalStorageNames } from "../localstorage.enum";
 
 interface ThemeContextData {
   theme: string;
@@ -6,7 +7,7 @@ interface ThemeContextData {
 }
 
 const initialThemeState = {
-  theme: localStorage.getItem("globalTheme") || "dark",
+  theme: localStorage.getItem(LocalStorageNames.globalTheme) || "dark",
   setTheme: () => {},
 };
 
@@ -17,7 +18,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState(initialThemeState.theme);
 
   useEffect(() => {
-    localStorage.setItem("globalTheme", theme);
+    localStorage.setItem(LocalStorageNames.globalTheme, theme);
   }, [theme]);
 
   return (
