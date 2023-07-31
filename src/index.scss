@@ -1,11 +1,20 @@
 :root {
+  --background-color: #595757;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --button-bg: #1a1a1a;
+  --action-items-text-color: #646cff;
+  --primary-color: gray;
+  --secondary-color: rgb(119, 105, 105);
+  --info-color: greenyellow;
+  --success-color: lightcyan;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #595757;
+
+  color: var(--text-color);
+  background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,13 +24,28 @@
   font-size: 1vw;
 }
 
+.theme--light {
+  --background-color: rgba(255, 255, 255, 0.87);
+  --text-color: #262626;
+  --button-bg: #cecfa2;
+  --action-items-text-color: #282828;
+  --primary-color: rgb(182, 182, 182);
+  --secondary-color: rgb(163, 158, 158);
+  --info-color: orange;
+  --success-color: green;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--action-items-text-color);
   text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  background-color: var(--button-bg);
+
+  &:hover {
+    filter: brightness(150%);
+  }
 }
 
 body {
@@ -44,28 +68,17 @@ button {
   font-size: 1vw;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg);
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  &:hover {
+    border-color: #646cff;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
   }
 }
 
@@ -76,7 +89,7 @@ button:focus-visible {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--action-items-text-color);
   border-radius: 0.1rem;
 }
 
