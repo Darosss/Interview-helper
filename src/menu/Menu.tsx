@@ -3,6 +3,7 @@ import { questionsList } from "../questions/questionsList";
 import { useMemo } from "react";
 import { toast } from "react-toastify";
 import { QuestionsURLParams } from "../questions/question.enums";
+import { ThemeSetter } from "../theme";
 
 export function Menu() {
   const [URLSearchParams, setURLSearchParams] = useSearchParams();
@@ -59,6 +60,9 @@ export function Menu() {
       <div id="menu" className="menu-wrapper">
         <div className="menu-head">
           <h1> Interview helper </h1>
+          <div className="change-theme">
+            <ThemeSetter />
+          </div>
           <div className="menu-head-buttons">
             <button onClick={handleRandomFromChoosen}> Random question </button>
             <button

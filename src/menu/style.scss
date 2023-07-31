@@ -3,7 +3,7 @@
 #menu {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(109, 109, 109);
+  background-color: var(--background-color);
   border-radius: 0.2rem;
   height: 200px;
   padding-bottom: 0.5rem;
@@ -15,6 +15,12 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
+    .change-theme {
+      position: absolute;
+      left: 0.5rem;
+      top: 0.5rem;
+    }
 
     button {
       font-size: 0.8vw;
@@ -39,7 +45,6 @@
     overflow-x: hidden;
 
     a {
-      background-color: rgb(23, 18, 18);
       overflow: hidden;
       flex: 1 1 15%;
       margin: 0.1rem;
