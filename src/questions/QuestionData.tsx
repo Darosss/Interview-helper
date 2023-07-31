@@ -1,6 +1,7 @@
 import { useContext, useRef } from "react";
 import { QuestionsList } from "./questions.interface";
 import { QuestionsContext } from "./QuestionsContext";
+import { LocalStorageNames } from "../localstorage.enum";
 
 interface QuestionDataProps {
   name: string;
@@ -15,7 +16,9 @@ export function QuestionData({ item }: QuestionDataProps) {
   const { updateDoneQuestions } = useContext(QuestionsContext);
 
   function handleDoneQuestion() {
-    const questionsLocalStorage = localStorage.getItem("doneQuestions");
+    const questionsLocalStorage = localStorage.getItem(
+      LocalStorageNames.doneQuestions
+    );
 
     if (questionsLocalStorage) {
       updateDoneQuestions([...questionsLocalStorage.split(","), item.id]);
@@ -24,7 +27,7 @@ export function QuestionData({ item }: QuestionDataProps) {
     }
 
     localStorage.setItem(
-      "doneQuestions",
+      LocalStorageNames.doneQuestions,
       `${item.id}${questionsLocalStorage ? `,${questionsLocalStorage}` : ""}`
     );
   }
