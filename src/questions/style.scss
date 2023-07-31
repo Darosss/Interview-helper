@@ -3,11 +3,18 @@
 #questions {
   display: flex;
   justify-content: center;
+  position: relative;
 
   .questions-wrapper {
     font-size: 3vmin;
+    display: flex;
+    flex-direction: column;
     div {
       padding: 0.5rem;
+    }
+
+    .done-questions {
+      z-index: 101;
     }
 
     .questions-list {
@@ -20,6 +27,9 @@
         left: 20px;
         top: 20px;
         z-index: 100;
+        button {
+          font-size: 0.8vw;
+        }
       }
 
       .copy-button {
@@ -135,6 +145,9 @@
       .questions-list {
         .topic-name-absolute {
           left: 30px;
+          button {
+            font-size: 1.2vw;
+          }
         }
         .copy-button {
           width: 70px;
@@ -172,6 +185,13 @@
       }
 
       .questions-list {
+        .topic-name-absolute {
+          left: 20px;
+          top: 20px;
+          button {
+            font-size: 1.2vw;
+          }
+        }
         .copy-button {
           width: 50px;
           font-size: 1vw;
