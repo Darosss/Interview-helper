@@ -15,7 +15,11 @@
 
   color: var(--text-color);
   background-color: var(--background-color);
-
+  background-image: linear-gradient(
+    99deg,
+    var(--background-color),
+    var(--primary-color)
+  );
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,15 +30,20 @@
 
 .theme--light {
   --background-color: rgba(255, 255, 255, 0.87);
-  --text-color: #262626;
+  --text-color: #999999;
   --button-bg: #cecfa2;
   --action-items-text-color: #282828;
-  --primary-color: rgb(182, 182, 182);
-  --secondary-color: rgb(163, 158, 158);
+  --primary-color: rgb(88, 111, 82);
+  --secondary-color: rgb(83, 93, 68);
   --info-color: orange;
-  --success-color: green;
+  --success-color: yellow;
   color: var(--text-color);
   background-color: var(--background-color);
+  background-image: linear-gradient(
+    99deg,
+    var(--background-color),
+    var(--primary-color)
+  );
 }
 
 a {
