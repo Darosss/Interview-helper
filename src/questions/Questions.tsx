@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 import { questionsList } from "./questionsList";
 import { QuestionData } from "./QuestionData";
 import { TopicsList } from "./questions.interface";
 import { QuestionsURLParams } from "./question.enums";
+import { QuestionsContext } from "./QuestionsContext";
 
 export function Questions() {
   const [URLSearchParams] = useSearchParams();
+  const { doneQuestions } = useContext(QuestionsContext);
 
   function getQuestions(
     topics: TopicsList[],
@@ -14,26 +16,31 @@ export function Questions() {
     random?: boolean,
     shuffle?: boolean
   ): JSX.Element | JSX.Element[] {
-    const questions = topics
-      .filter(({ id }) => {
-        return topicId?.split(",").includes(id);
-      })
-      ?.map(({ questions, name }) =>
-        questions.map((item, idx) => (
-          <QuestionData key={`${idx}-${name}`} name={name} item={item} />
-        ))
+    const topicsList = topics.filter(({ id }) => {
+      return topicId?.split(",").includes(id);
+    });
+
+    const filteredQuestionsList = topicsList
+      .map(({ questions, name }) =>
+        questions
+          .filter((item) => !doneQuestions.includes(item.id))
+          .map((item, idx) => (
+            <QuestionData key={`${idx}-${name}`} name={name} item={item} />
+          ))
       )
+      .filter((item) => item !== undefined)
       .flat();
 
     if (random) {
-      const flatQuestions = questions;
-      return flatQuestions[Math.floor(Math.random() * flatQuestions.length)];
+      return filteredQuestionsList[
+        Math.floor(Math.random() * filteredQuestionsList.length)
+      ];
     }
     if (shuffle) {
-      return questions.sort(() => Math.random() - 0.5);
+      return filteredQuestionsList.sort(() => Math.random() - 0.5);
     }
 
-    if (questions.length > 0) return questions;
+    if (filteredQuestionsList.length > 0) return filteredQuestionsList;
     return <>Choose topics to get questions </>;
   }
 
