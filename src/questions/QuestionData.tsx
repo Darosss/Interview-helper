@@ -1,17 +1,36 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { QuestionsList } from "./questions.interface";
+import { QuestionsContext } from "./QuestionsContext";
 
 interface QuestionDataProps {
   name: string;
   item: QuestionsList;
 }
 
-export function QuestionData({ name, item }: QuestionDataProps) {
+export function QuestionData({ item }: QuestionDataProps) {
   const questionRef = useRef<HTMLDivElement>(null);
   const answerRef = useRef<HTMLDivElement>(null);
+  const questionWrapperRef = useRef<HTMLDivElement>(null);
+
+  const { updateDoneQuestions } = useContext(QuestionsContext);
+
+  function handleDoneQuestion() {
+    const questionsLocalStorage = localStorage.getItem("doneQuestions");
+
+    if (questionsLocalStorage) {
+      updateDoneQuestions([...questionsLocalStorage.split(","), item.id]);
+    } else {
+      updateDoneQuestions([item.id]);
+    }
+
+    localStorage.setItem(
+      "doneQuestions",
+      `${item.id}${questionsLocalStorage ? `,${questionsLocalStorage}` : ""}`
+    );
+  }
 
   return (
-    <div className="questions-list prevent-select">
+    <div className="questions-list prevent-select" ref={questionWrapperRef}>
       <button
         className="copy-button copy-question"
         onClick={() =>
@@ -30,7 +49,9 @@ export function QuestionData({ name, item }: QuestionDataProps) {
         <img src="/copy.png" />
         ANSWER
       </button>
-      <div className="topic-name-absolute">{name}</div>
+      <div className="topic-name-absolute">
+        <button onClick={handleDoneQuestion}>Done {item.id}</button>
+      </div>
       <div>
         <div
           className="question"
@@ -45,3 +66,5 @@ export function QuestionData({ name, item }: QuestionDataProps) {
     </div>
   );
 }
+
+//TODO: add notification about add to clipboard question / answer
