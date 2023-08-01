@@ -30,9 +30,7 @@ export const nodeQuestions: QuestionsList[] = generate_QA_LIST("node", [
     ],
   },
   {
-    question: [
-      "Key features of Node.js? / Najważniejsze kluczowe cechy Node.js",
-    ],
+    question: ["Key features of Node.js?"],
     answer: [
       `Let’s look at some of the key features of Node.js.`,
       `Asynchronous event driven IO helps concurrent request handling – All APIs of Node.js are asynchronous. This feature means that if a Node receives a request for some Input/Output operation, it will execute that operation in the background and continue with the processing of other requests. Thus it will not wait for the response from the previous requests.`,
@@ -44,9 +42,7 @@ export const nodeQuestions: QuestionsList[] = generate_QA_LIST("node", [
     ],
   },
   {
-    question: [
-      "Why does Node.js prefer Error-First Callback? / Dlaczego w node.js preferowanym jest używanie error-first w callbackach",
-    ],
+    question: ["Why does Node.js prefer Error-First Callback?"],
     answer: [
       `The usual pattern is that the callback is invoked as callback(err, result), where only one of err and result is non-null, depending on whether the operation succeeded or failed. Without this convention, developers would have to maintain different signatures and APIs, without knowing where to place the error in the arguments array.`,
     ],
@@ -74,7 +70,7 @@ export const nodeQuestions: QuestionsList[] = generate_QA_LIST("node", [
     ],
   },
   {
-    question: ["What is V8? / Co to V8?"],
+    question: ["What is V8?"],
     answer: [
       `The V8 library provides Node.js with a JavaScript engine (a program that converts Javascript code into lower level or machine code that microprocessors can understand), which Node.js controls via the V8 C++ API. V8 is maintained by Google, for use in Chrome.`,
       `The Chrome V8 engine :`,
@@ -84,15 +80,13 @@ export const nodeQuestions: QuestionsList[] = generate_QA_LIST("node", [
     ],
   },
   {
-    question: ["What is the file package.json? / Co to za plik package.json"],
+    question: ["What is the file package.json?"],
     answer: [
       `All npm packages contain a file, usually in the project root, called package.json - this file holds various metadata relevant to the project. This file is used to give information to npm that allows it to identify the project as well as handle the project's dependencies. It can also contain other metadata such as a project description, the version of the project in a particular distribution, license information, even configuration data - all of which can be vital to both npm and to the end users of the package. The package.json file is normally located at the root directory of a Node.js project.`,
     ],
   },
   {
-    question: [
-      "Name some built-in globals in Node.js / Wymien kilka wbudowanych globalnych z Node.js",
-    ],
+    question: ["Name some built-in globals in Node.js"],
     answer: [
       `Node.js has a number of built-in global identifiers that every Node.js developer should have some familiarity with. Some of these are true globals, being visible everywhere; others exist at the module level, but are inherent to every module, thus being pseudo-globals.`,
       `The list of true globals:`,
@@ -108,15 +102,13 @@ export const nodeQuestions: QuestionsList[] = generate_QA_LIST("node", [
     ],
   },
   {
-    question: ["What does promisifying technique mean in Node.js? /"],
+    question: ["What does promisifying technique mean in Node.js?"],
     answer: [
       "This technique is a way to be able to use a classic Javascript function that takes a callback, and have it return a promise",
     ],
   },
   {
-    question: [
-      "Difference between process.cwd() and __dirname / Różnica pomiędzy process.cwd() a __dirname",
-    ],
+    question: ["Difference between process.cwd() and __dirname "],
     answer: [
       `- cwd is a method of global object process, returns a string value which is the current working directory of the Node.js process.`,
       `- __dirname is the directory name of the current script as a string value. __dirname is not actually global but rather local to each module.`,
