@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { QuestionsContext } from "../questions/QuestionsContext";
 import { toast } from "react-toastify";
 import { LocalStorageNames } from "../localstorage.enum";

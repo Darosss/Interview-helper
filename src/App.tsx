@@ -1,6 +1,5 @@
 import "./app.scss";
 import "react-toastify/dist/ReactToastify.css";
-import React from "react";
 import { Menu } from "./menu";
 import { Home } from "./home";
 import { Route, Routes } from "react-router-dom";

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 import { questionsList } from "./questionsList";
 import { QuestionData } from "./QuestionData";
