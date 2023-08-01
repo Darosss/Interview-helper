@@ -3,7 +3,11 @@ import React from "react";
 export function Home() {
   return (
     <>
-      <div id="home">HOMER KURWA</div>
+      <div id="home">
+        <h1> Interview helper </h1>
+        Web application where are stored interview questions <br />
+        Use menu to get some
+      </div>
     </>
   );
 }
