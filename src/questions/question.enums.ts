@@ -3,3 +3,7 @@ export enum QuestionsURLParams {
   SHUFFLE = "shuffle",
   RANDOM = "random",
 }
+
+export enum QuestionsLegendHTMLElements {
+  img = "[img]",
+}
