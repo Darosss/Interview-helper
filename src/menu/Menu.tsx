@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { questionsList } from "../questions/questionsList";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { QuestionsURLParams } from "../questions/question.enums";
 import { ThemeSetter } from "../theme";
@@ -8,6 +8,7 @@ import { DoneQuestions } from "./DoneQuestions";
 
 export function Menu() {
   const [URLSearchParams, setURLSearchParams] = useSearchParams();
+  const [showMenu, setShowMenu] = useState(true);
   const allTopics = useMemo(() => questionsList.map((value) => value.id), []);
 
   function handleRandomAll() {
@@ -56,9 +57,19 @@ export function Menu() {
     return [...topicsIdsParams, newTopic];
   }
 
+  if (!showMenu)
+    return (
+      <div className="menu-wrapper-hidden">
+        <button onClick={() => setShowMenu(true)}> ^ </button>
+      </div>
+    );
+
   return (
     <>
       <div id="menu" className="menu-wrapper">
+        <div className="menu-button-hide">
+          <button onClick={() => setShowMenu(false)}> ^ </button>
+        </div>
         <div className="menu-head">
           <h1> Interview helper </h1>
           <div className="change-theme">
