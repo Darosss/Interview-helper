@@ -1,3 +1,5 @@
+@use "../variables.scss";
+
 label.toggle-button-wrapper {
   position: relative;
   display: inline-block;
@@ -5,7 +7,7 @@ label.toggle-button-wrapper {
   height: 25px;
 
   div {
-    margin-top: 0.5rem;
+    margin-top: 0.4vw;
     font-size: 0.8vw;
   }
 
@@ -30,8 +32,8 @@ label.toggle-button-wrapper {
       position: absolute;
       content: "";
       height: 19px;
-      width: 23px;
-      left: 3px;
+      width: 21px;
+      left: 5px;
       bottom: 3px;
       background-color: var(--action-items-text-color);
       border-radius: 50%;
@@ -45,5 +47,67 @@ label.toggle-button-wrapper {
 
   input:checked + span:before {
     transform: translateX(29px);
+  }
+}
+
+@media (max-width: variables.$window-size-breakpoint-x-large) {
+  label.toggle-button-wrapper {
+    width: 50px;
+    height: 20px;
+
+    div {
+      font-size: 1.1vw;
+
+      margin-top: 0.2vw;
+    }
+
+    span {
+      &:before {
+        height: 16px;
+        width: 16px;
+        left: 2px;
+        bottom: 2px;
+      }
+    }
+  }
+}
+@media (max-width: variables.$window-size-breakpoint-large) {
+  label.toggle-button-wrapper {
+    width: 40px;
+    height: 10px;
+
+    div {
+      font-size: 1.1vw;
+      margin-top: 0.1vw;
+    }
+
+    span {
+      &:before {
+        height: 8px;
+        width: 12px;
+        left: -2px;
+        bottom: 1px;
+      }
+    }
+  }
+}
+@media (max-width: variables.$window-size-breakpoint-small) {
+  label.toggle-button-wrapper {
+    width: 40px;
+    height: 10px;
+
+    div {
+      margin-top: 0.8vw;
+      font-size: 1.4vw;
+    }
+
+    span {
+      &:before {
+        height: 8px;
+        width: 12px;
+        left: -2px;
+        bottom: 1px;
+      }
+    }
   }
 }
