@@ -71,7 +71,9 @@ export function Menu() {
           <button onClick={() => setShowMenu(false)}> ^ </button>
         </div>
         <div className="menu-head">
-          <h1> Interview helper </h1>
+          <h1>
+            <Link to="/">Interview helper</Link>
+          </h1>
           <div className="change-theme">
             <ThemeSetter />
           </div>
