@@ -8,7 +8,7 @@ import { QuestionsListPaginated } from "./questions.interface";
 import ReactPaginate from "react-paginate";
 
 export function Questions() {
-  const [URLSearchParams] = useSearchParams();
+  const [urlSearchParams] = useSearchParams();
   const { doneQuestions } = useContext(QuestionsContext);
   const [maxPages, setMaxPaxes] = useState(0);
   const [page, setPage] = useState(0);
@@ -19,10 +19,10 @@ export function Questions() {
 
   async function fetchData() {
     const dataRes = getQuestionsListPaginated(
-      URLSearchParams.get(QuestionsURLParams.TOPIC_ID)?.split(",") ?? [],
+      urlSearchParams.get(QuestionsURLParams.TOPIC_ID)?.split(",") ?? [],
       doneQuestions,
-      !!URLSearchParams.get(QuestionsURLParams.RANDOM),
-      !!URLSearchParams.get(QuestionsURLParams.SHUFFLE),
+      !!urlSearchParams.get(QuestionsURLParams.RANDOM),
+      !!urlSearchParams.get(QuestionsURLParams.SHUFFLE),
       { limit, page }
     );
 
@@ -33,7 +33,7 @@ export function Questions() {
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [page, urlSearchParams]);
 
   return (
     <>
