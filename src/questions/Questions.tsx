@@ -47,19 +47,21 @@ export function Questions() {
             />
           ))}
         </div>
-        <div className="questions-pagination-wrapper prevent-select">
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={(e) => setPage(e.selected)}
-            pageRangeDisplayed={5}
-            pageCount={maxPages}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-            className="question-pagination"
-            activeLinkClassName="pagination-active"
-          />
-        </div>
+        {maxPages > 1 ? (
+          <div className="questions-pagination-wrapper prevent-select">
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="next >"
+              onPageChange={(e) => setPage(e.selected)}
+              pageRangeDisplayed={5}
+              pageCount={maxPages}
+              previousLabel="< previous"
+              renderOnZeroPageCount={null}
+              className="question-pagination"
+              activeLinkClassName="pagination-active"
+            />
+          </div>
+        ) : null}
       </div>
     </>
   );
