@@ -8,8 +8,9 @@ An application that I'm building to help me to organize most of interview questi
 
 - [x] hide / show head menu
 - [] make QuestionsLegendHTMLElements for JSON (similar to simple markdown)
-- [] store data from done questions
-- [] simple pagination (or infinite scrolling)
+- [x] store data from done questions in localstorage
+- [x] simple pagination (or infinite scrolling)
+- [] make better fetch data [random, shuffle] (now it's refresh site)
 
 # Instalation
 
