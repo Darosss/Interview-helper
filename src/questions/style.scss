@@ -4,11 +4,14 @@
   display: flex;
   justify-content: center;
   position: relative;
+  flex-direction: column;
+  min-height: 100vh;
 
   .questions-wrapper {
     font-size: 3vmin;
     display: flex;
     flex-direction: column;
+    padding-bottom: 3rem;
     div {
       padding: 0.5rem;
     }
@@ -94,6 +97,48 @@
   & > div {
     flex: 1 1 100%;
     padding: 0.5rem;
+  }
+
+  .questions-pagination-wrapper {
+    position: sticky;
+    max-height: 5vh;
+    min-height: 5vh;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    background-color: var(--background-color);
+
+    .pagination-active {
+      color: var(--info-color);
+    }
+
+    ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      li {
+        width: 5vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+          width: 50%;
+          border-radius: 0.5rem;
+          cursor: pointer;
+        }
+
+        &:first-child,
+        &:last-child {
+          width: 8vw;
+          a {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
 
