@@ -7,7 +7,7 @@ import { ThemeSetter } from "../theme";
 import { DoneQuestions } from "./DoneQuestions";
 
 export function Menu() {
-  const [URLSearchParams, setURLSearchParams] = useSearchParams();
+  const [urlSearchParams, setURLSearchParams] = useSearchParams();
   const [showMenu, setShowMenu] = useState(true);
   const allTopics = useMemo(() => questionsList.map((value) => value.id), []);
 
@@ -17,13 +17,18 @@ export function Menu() {
       prevParams.set(QuestionsURLParams.RANDOM, "true");
       return prevParams;
     });
+
+    window.location.reload();
   }
 
   function handleRandomFromChoosen() {
-    if (!URLSearchParams.get(QuestionsURLParams.TOPIC_ID)) {
+    if (!urlSearchParams.get(QuestionsURLParams.TOPIC_ID)) {
       toast.info("Choose at least one topic first", { autoClose: 5000 }); //alert
       return;
     }
+
+    if (urlSearchParams.has(QuestionsURLParams.RANDOM))
+      window.location.reload();
 
     setURLSearchParams((prevParams) => {
       prevParams.set(QuestionsURLParams.RANDOM, "true");
@@ -32,10 +37,13 @@ export function Menu() {
   }
 
   function handleOnShuffleQuestions() {
-    if (!URLSearchParams.get(QuestionsURLParams.TOPIC_ID)) {
+    if (!urlSearchParams.get(QuestionsURLParams.TOPIC_ID)) {
       toast.info("Choose at least one topic first", { autoClose: 5000 }); //alert
       return;
     }
+
+    if (urlSearchParams.has(QuestionsURLParams.SHUFFLE))
+      window.location.reload();
 
     setURLSearchParams((prevParams) => {
       prevParams.set(QuestionsURLParams.SHUFFLE, "true");
@@ -44,9 +52,9 @@ export function Menu() {
   }
 
   function handleParamsOnClick(newTopic: string) {
-    const topicsIdsParams = URLSearchParams.get(
-      QuestionsURLParams.TOPIC_ID
-    )?.split(",");
+    const topicsIdsParams = urlSearchParams
+      .get(QuestionsURLParams.TOPIC_ID)
+      ?.split(",");
 
     if (!topicsIdsParams) return newTopic;
 
@@ -81,7 +89,7 @@ export function Menu() {
             <button onClick={handleRandomFromChoosen}> Random question </button>
             <button
               className={`${
-                URLSearchParams.get(QuestionsURLParams.RANDOM) === "true"
+                urlSearchParams.get(QuestionsURLParams.RANDOM) === "true"
                   ? "active"
                   : ""
               }`}
@@ -106,9 +114,9 @@ export function Menu() {
             <Link
               key={idx}
               className={`menu-button ${
-                URLSearchParams.get(QuestionsURLParams.TOPIC_ID)?.includes(
-                  topic.id
-                )
+                urlSearchParams
+                  .get(QuestionsURLParams.TOPIC_ID)
+                  ?.includes(topic.id)
                   ? "active"
                   : ""
               }`}
