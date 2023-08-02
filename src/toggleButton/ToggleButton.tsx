@@ -16,8 +16,11 @@ export function ToggleButton({ label, toggled, onClick }: ToggleButtonProps) {
   return (
     <label className="toggle-button-wrapper">
       <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
-      <span />
-      <strong>{label}</strong>
+      <span></span>
+      <br />
+      <div>
+        <strong>{label}</strong>
+      </div>
     </label>
   );
 }
