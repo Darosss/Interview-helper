@@ -9,3 +9,12 @@ export interface TopicsList {
   name: string;
   questions: QuestionsList[];
 }
+
+export interface QuestionsListPaginated extends QuestionsList {
+  name: string;
+}
+
+export interface GetQuestionsListPaginated {
+  data: QuestionsListPaginated[];
+  maxPages: number;
+}
