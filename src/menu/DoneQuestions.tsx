@@ -17,7 +17,6 @@ export function DoneQuestions() {
     const questionsLocalStorage = localStorage.getItem(
       LocalStorageNames.doneQuestions
     );
-    console.log(questionsLocalStorage);
     if (!questionsLocalStorage) return;
 
     const newDoneQuestions = questionsLocalStorage
