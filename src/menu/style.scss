@@ -44,6 +44,12 @@
     flex-direction: column;
     overflow: hidden;
 
+    h1 {
+      a {
+        background-color: transparent;
+      }
+    }
+
     .change-theme {
       position: absolute;
       left: 0.5rem;
