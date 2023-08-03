@@ -57,11 +57,11 @@ export function QuestionData({ item }: QuestionDataProps) {
         <button onClick={handleDoneQuestion}>Done {item.id}</button>
       </div>
       <div>
-        <div
-          className="question"
-          onClick={(e) => e.currentTarget.classList.toggle("show-answer")}
-        >
-          <div ref={questionRef}>
+        <div className="question">
+          <div
+            ref={questionRef}
+            onClick={() => answerRef.current?.classList.toggle("show-answer")}
+          >
             {item.question.map((question, idx) => (
               <div key={idx}>{question}</div>
             ))}
