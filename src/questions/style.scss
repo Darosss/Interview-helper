@@ -83,10 +83,8 @@
       color: var(--success-color);
       display: none;
       position: relative;
-    }
 
-    .show-answer {
-      .answer {
+      &.show-answer {
         display: block;
         font-size: 0.8vw;
         text-align: left;
