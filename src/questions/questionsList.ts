@@ -1,5 +1,9 @@
 import { GetQuestionsListPaginated, TopicsList } from "./questions.interface";
-import { nodeQuestions, reactQuestions } from "./interviewQuestionsData";
+import {
+  nodeQuestions,
+  reactQuestions,
+  jsQuestions,
+} from "./interviewQuestionsData";
 
 export function getQuestionsListPaginated(
   topicsIds: string[],
@@ -43,6 +47,7 @@ export function getQuestionsListPaginated(
 export const questionsList = generateJSONQuestions([
   { name: "Node.js", questions: nodeQuestions },
   { name: "React", questions: reactQuestions },
+  { name: "JS", questions: jsQuestions },
 ]);
 
 function generateJSONQuestions(
