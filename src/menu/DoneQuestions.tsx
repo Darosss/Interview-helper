@@ -38,6 +38,14 @@ export function DoneQuestions() {
     }
   }
 
+  function handleUndoneAll() {
+    if (
+      window.confirm("Warning! \n Do your really want to undone all questions?")
+    ) {
+      updateDoneQuestions([]);
+    }
+  }
+
   useEffect(() => {
     handleCloseOnNoDoneQuestions();
   }, [doneQuestions]);
@@ -50,6 +58,9 @@ export function DoneQuestions() {
           <div className="close-button" onClick={() => setShow(false)}>
             <button> X </button>
           </div>
+          <button className="undone-all-button" onClick={handleUndoneAll}>
+            Undone all
+          </button>
           {doneQuestions.map((question, idx) => (
             <button key={idx} onClick={() => handleUnDoneQuestion(question)}>
               {question}
