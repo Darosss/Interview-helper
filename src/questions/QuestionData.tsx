@@ -4,6 +4,7 @@ import { QuestionsContext } from "./QuestionsContext";
 import { LocalStorageNames } from "../localstorage.enum";
 import { QuestionsLegendHTMLElements } from "./question.enums";
 import { ImageModal } from "../imageModal";
+import { toast } from "react-toastify";
 
 interface QuestionDataProps {
   name: string;
@@ -34,12 +35,20 @@ export function QuestionData({ item }: QuestionDataProps) {
     );
   }
 
+  function handleCopyToCliboardFromDiv(
+    element: HTMLDivElement | null,
+    elementName = "Div content"
+  ) {
+    toast.info(`${elementName} copied to cliboard`);
+    navigator.clipboard.writeText(element?.textContent ?? "");
+  }
+
   return (
     <div className="questions-list prevent-select" ref={questionWrapperRef}>
       <button
         className="copy-button copy-question"
         onClick={() =>
-          navigator.clipboard.writeText(questionRef.current?.textContent ?? "")
+          handleCopyToCliboardFromDiv(questionRef.current, "Question ")
         }
       >
         <img src="/copy.png" />
@@ -48,7 +57,7 @@ export function QuestionData({ item }: QuestionDataProps) {
       <button
         className="copy-button copy-answer"
         onClick={() =>
-          navigator.clipboard.writeText(answerRef.current?.textContent ?? "")
+          handleCopyToCliboardFromDiv(answerRef.current, "Question")
         }
       >
         <img src="/copy.png" />
