@@ -1,0 +1,54 @@
+@use "../variables";
+
+.image-modal-default {
+  width: 30%;
+}
+
+.image-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  background-color: papayawhip;
+
+  img {
+    max-width: 70vw;
+    max-height: 80vh;
+  }
+}
+
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #5957578a;
+  z-index: 200;
+}
+
+@media (max-width: variables.$window-size-breakpoint-x-large) {
+  .image-modal-default {
+    width: 70%;
+  }
+
+  .image-modal {
+    img {
+      max-width: 80vw;
+    }
+  }
+}
+
+@media (max-width: variables.$window-size-breakpoint-small) {
+  .image-modal-default {
+    width: 100%;
+  }
+
+  .image-modal {
+    img {
+      max-width: 90vw;
+    }
+  }
+}
