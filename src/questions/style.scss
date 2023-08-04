@@ -158,25 +158,30 @@
       }
 
       .questions-list {
+        $question-list-width: 120px;
+        $button-right: 80px;
+        $button-top: 80px;
+
         .topic-name-absolute {
           left: 50px;
           top: 40px;
         }
         .copy-button {
-          width: 120px;
+          width: $question-list-width;
           font-size: 1vw;
           img {
             width: 10px;
           }
 
           &.copy-question {
-            top: 80px;
-            right: 80px;
+            top: $button-top;
+            right: calc($question-list-width + $button-right) + 10;
           }
 
           &.copy-answer {
-            bottom: 80px;
-            right: 80px;
+            top: $button-top;
+            right: $button-right;
+            bottom: auto;
           }
         }
       }
@@ -198,6 +203,9 @@
       }
 
       .questions-list {
+        $question-list-width: 70px;
+        $button-right: 60px;
+        $button-top: 65px;
         .topic-name-absolute {
           left: 30px;
           button {
@@ -213,19 +221,20 @@
 
           &.copy-question {
             top: 65px;
-            right: 60px;
+            right: calc($question-list-width + $button-right) + 10;
           }
 
           &.copy-answer {
-            bottom: 65px;
+            top: 65px;
             right: 60px;
+            bottom: auto;
           }
         }
       }
 
       .question {
-        padding-left: 12rem;
-        padding-right: 15rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
       }
     }
   }
@@ -240,6 +249,10 @@
       }
 
       .questions-list {
+        $question-list-width: 50px;
+        $button-right: 45px;
+        $button-top: 35px;
+
         .topic-name-absolute {
           left: 20px;
           top: 20px;
@@ -248,27 +261,28 @@
           }
         }
         .copy-button {
-          width: 50px;
+          width: $question-list-width;
           font-size: 1vw;
           img {
             width: 10px;
           }
 
           &.copy-question {
-            top: 45px;
-            right: 45px;
+            top: $button-top;
+            right: calc($question-list-width + $button-right) + 10;
           }
 
           &.copy-answer {
-            bottom: 45px;
-            right: 45px;
+            top: $button-top;
+            right: $button-right;
+            bottom: auto;
           }
         }
       }
 
       .question {
-        padding-left: 12rem;
-        padding-right: 15rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
       }
     }
   }
