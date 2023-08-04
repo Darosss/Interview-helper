@@ -1,15 +1,17 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { questionsList } from "../questions/questionsList";
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { QuestionsURLParams } from "../questions/question.enums";
 import { ThemeSetter } from "../theme";
 import { DoneQuestions } from "./DoneQuestions";
+import { QuestionsContext } from "../questions/QuestionsContext";
 
 export function Menu() {
   const [urlSearchParams, setURLSearchParams] = useSearchParams();
   const [showMenu, setShowMenu] = useState(true);
   const allTopics = useMemo(() => questionsList.map((value) => value.id), []);
+  const { fetchQuestionsData } = useContext(QuestionsContext);
 
   function handleRandomAll() {
     setURLSearchParams((prevParams) => {
@@ -18,7 +20,7 @@ export function Menu() {
       return prevParams;
     });
 
-    window.location.reload();
+    fetchQuestionsData();
   }
 
   function handleRandomFromChoosen() {
@@ -28,7 +30,7 @@ export function Menu() {
     }
 
     if (urlSearchParams.has(QuestionsURLParams.RANDOM))
-      window.location.reload();
+      return fetchQuestionsData();
 
     setURLSearchParams((prevParams) => {
       prevParams.set(QuestionsURLParams.RANDOM, "true");
@@ -43,7 +45,7 @@ export function Menu() {
     }
 
     if (urlSearchParams.has(QuestionsURLParams.SHUFFLE))
-      window.location.reload();
+      return fetchQuestionsData();
 
     setURLSearchParams((prevParams) => {
       prevParams.set(QuestionsURLParams.SHUFFLE, "true");
