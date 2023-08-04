@@ -47,7 +47,7 @@ export function DoneQuestions() {
   }
 
   useEffect(() => {
-    handleCloseOnNoDoneQuestions();
+    if (show) handleCloseOnNoDoneQuestions();
   }, [doneQuestions]);
 
   return (
