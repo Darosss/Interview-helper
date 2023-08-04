@@ -57,7 +57,7 @@ export function QuestionData({ item }: QuestionDataProps) {
       <button
         className="copy-button copy-answer"
         onClick={() =>
-          handleCopyToCliboardFromDiv(answerRef.current, "Question")
+          handleCopyToCliboardFromDiv(answerRef.current, "Answer ")
         }
       >
         <img src="/copy.png" />
@@ -94,5 +94,3 @@ export function QuestionData({ item }: QuestionDataProps) {
     </div>
   );
 }
-
-//TODO: add notification about add to clipboard question / answer
