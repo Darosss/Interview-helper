@@ -3,6 +3,7 @@ import { QuestionsList } from "./questions.interface";
 import { QuestionsContext } from "./QuestionsContext";
 import { LocalStorageNames } from "../localstorage.enum";
 import { QuestionsLegendHTMLElements } from "./question.enums";
+import { ImageModal } from "../imageModal";
 
 interface QuestionDataProps {
   name: string;
@@ -70,11 +71,8 @@ export function QuestionData({ item }: QuestionDataProps) {
             {item.answer.map((answer, idx) => (
               <div key={idx}>
                 {answer.startsWith(QuestionsLegendHTMLElements.img) ? (
-                  <img
-                    src={answer
-                      .slice(QuestionsLegendHTMLElements.img.length)
-                      .trim()}
-                    alt={answer}
+                  <ImageModal
+                    src={answer.slice(QuestionsLegendHTMLElements.img.length)}
                   />
                 ) : (
                   answer
