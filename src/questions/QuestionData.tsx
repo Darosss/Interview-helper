@@ -69,6 +69,7 @@ export function QuestionData({ item }: QuestionDataProps) {
       <div>
         <div className="question">
           <div
+            className="question-header"
             ref={questionRef}
             onClick={() => answerRef.current?.classList.toggle("show-answer")}
           >
