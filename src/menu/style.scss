@@ -85,6 +85,15 @@
             var(--secondary-color)
           );
 
+          .undone-all-button {
+            color: red;
+
+            &:hover {
+              border: 0.1rem solid red;
+              filter: brightness(150%);
+            }
+          }
+
           .close-button {
             position: absolute;
             right: 0;
